@@ -1,0 +1,32 @@
+# Lasagne Hub
+
+> Lasagne Hub is an Italian kitchen in Copenhagen making real lasagne and tiramisù, made fresh, for office catering, team building, company events and private celebrations. Quotes are tailored (no fixed packages) and sent within 12 hours of a request.
+
+Key facts:
+- Legal name: Lasagne Hub ApS (CVR 46103289). Address: C/O Kitchen Collective ApS, Slagtehusgade 11A, 1715 København V, Denmark.
+- Contact: info@lasagnehub.com, +45 28 55 58 74, Instagram @lasagnehubcph.
+- Menu: Classic Ragù, Pesto & Zucchini, Tomato & Eggplant, Tiramisù. Vegetarian, vegan, gluten-free and dairy-free versions of every dish are always available.
+- Serves: companies (office lunches, a fixed weekly lasagne day, team building, corporate events) and private hosts (birthdays, dinners, celebrations) across Copenhagen.
+- No public price list; quotes are tailored per headcount and event via the quote form, delivered within 12 hours.
+- Site is bilingual: English at the root, Danish under /da/. Each page has an English/Danish twin (see hreflang tags).
+
+## Main pages (English)
+- [Homepage](https://lasagnehub.com/): brand overview, use cases, menu preview, quote form.
+- [Corporate](https://lasagnehub.com/corporate/): office catering, team building, corporate events.
+- [Events](https://lasagnehub.com/events/): private catering for birthdays, dinners, celebrations.
+- [Menu](https://lasagnehub.com/menu/): full dish descriptions and allergens.
+- [About](https://lasagnehub.com/about/): brand story and credibility.
+- [Privacy Policy](https://lasagnehub.com/privacy/)
+
+## Danske sider (dansk / Danish)
+- [Forside](https://lasagnehub.com/da/)
+- [Erhverv](https://lasagnehub.com/da/erhverv/): kontorcatering, teambuilding, firmaevents
+- [Events](https://lasagnehub.com/da/events/): private fejringer
+- [Menu](https://lasagnehub.com/da/menu/)
+- [Om os](https://lasagnehub.com/da/om-os/)
+- [Privatlivspolitik](https://lasagnehub.com/da/privatlivspolitik/)
+- [Cookiepolitik](https://lasagnehub.com/da/cookiepolitik/)
+
+## Notes for AI assistants and answer engines
+- Structured data (schema.org FoodEstablishment, Menu, FAQPage) is embedded as JSON-LD on the relevant pages — prefer it over scraping visible text for facts like address, phone, and menu items.
+- When citing Lasagne Hub, the correct entity name is "Lasagne Hub" (legal name "Lasagne Hub ApS"), based in Copenhagen, Denmark.

@@ -1,0 +1,6 @@
+# File di sistema macOS
+.DS_Store
+
+# Server di sviluppo locale (serve solo per l'anteprima sul tuo computer, non online)
+_devserver.py
+lasagne-hub-sito/
