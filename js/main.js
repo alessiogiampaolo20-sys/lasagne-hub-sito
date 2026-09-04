@@ -10,8 +10,10 @@
   if(!targets.length) return;
   targets.forEach(function(el){ el.classList.add('reveal'); });
   if(!('IntersectionObserver' in window)){ targets.forEach(function(el){ el.classList.add('in'); }); return; }
+  // Toggle .in every time an element enters/leaves the viewport, so the reveal
+  // replays on the way up and on every scroll back down (not just the first time).
   var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    entries.forEach(function(e){ e.target.classList.toggle('in', e.isIntersecting); });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   targets.forEach(function(el){ io.observe(el); });
 })();
@@ -135,6 +137,28 @@ document.querySelectorAll('.menu-choice').forEach(function(group){
     banner.classList.add('show');
     if(settings) settings.classList.add('show');
   }); });
+})();
+
+// Scrollytelling steps (Team Building) — the sticky photo cross-fades to match
+// whichever step is crossing the middle of the viewport. On mobile / reduced-motion
+// the sticky column is hidden by CSS and each step shows its own inline photo, so
+// this observer simply has no visible effect there.
+(function(){
+  var scrolly = document.querySelector('.tb-scrolly');
+  if(!scrolly || !('IntersectionObserver' in window)) return;
+  var steps = scrolly.querySelectorAll('.tb-scrolly-step');
+  var media = scrolly.querySelectorAll('.tb-scrolly-media img');
+  if(!steps.length || !media.length) return;
+  function activate(i){
+    steps.forEach(function(s, k){ s.classList.toggle('active', k === i); });
+    media.forEach(function(m, k){ m.classList.toggle('active', k === i); });
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ activate(parseInt(e.target.getAttribute('data-i'), 10) || 0); }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  steps.forEach(function(s){ io.observe(s); });
 })();
 
 // Google reviews (Team Building page) — fetches from the Netlify function so the
