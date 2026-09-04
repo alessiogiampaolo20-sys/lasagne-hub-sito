@@ -1,0 +1,7 @@
+# Netlify configuration.
+# The site is plain static HTML (no build step); we only declare the publish
+# directory (the repo root) and where the serverless functions live.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"

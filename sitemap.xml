@@ -15,6 +15,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lasagnehub.com/corporate/"/>
   </url>
   <url>
+    <loc>https://lasagnehub.com/corporate/team-building/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lasagnehub.com/corporate/team-building/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://lasagnehub.com/da/erhverv/teambuilding/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lasagnehub.com/corporate/team-building/"/>
+  </url>
+  <url>
     <loc>https://lasagnehub.com/events/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://lasagnehub.com/events/"/>
     <xhtml:link rel="alternate" hreflang="da" href="https://lasagnehub.com/da/events/"/>
@@ -47,6 +53,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://lasagnehub.com/corporate/"/>
     <xhtml:link rel="alternate" hreflang="da" href="https://lasagnehub.com/da/erhverv/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lasagnehub.com/corporate/"/>
+  </url>
+  <url>
+    <loc>https://lasagnehub.com/da/erhverv/teambuilding/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lasagnehub.com/corporate/team-building/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://lasagnehub.com/da/erhverv/teambuilding/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lasagnehub.com/corporate/team-building/"/>
   </url>
   <url>
     <loc>https://lasagnehub.com/da/events/</loc>

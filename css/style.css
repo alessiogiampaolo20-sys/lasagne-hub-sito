@@ -375,3 +375,49 @@ footer{background:var(--text);color:#e8e8e8;padding:56px 0 32px}
 .card:hover .imgslot img,.dish:not(.coming-soon):hover .imgslot img{transform:scale(1.05)}
 /* eyebrow gets a small animated underline accent */
 .section-head .eyebrow{position:relative;padding-bottom:2px}
+
+/* ============================================================
+   TEAM BUILDING PAGE
+   ============================================================ */
+
+/* Step-by-step timeline (reveal animation comes from .reveal via main.js) */
+.tb-steps{max-width:780px;margin:0 auto}
+.tb-step{display:grid;grid-template-columns:auto 1fr;gap:26px;padding-bottom:42px;position:relative}
+.tb-step:last-child{padding-bottom:0}
+.tb-step-num{width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;font-family:var(--font-display);font-size:1.5rem;display:flex;align-items:center;justify-content:center;flex:0 0 auto;position:relative;z-index:1}
+.tb-step:not(:last-child)::before{content:"";position:absolute;left:28px;top:58px;bottom:6px;width:2px;background:var(--line)}
+.tb-step-body{padding-top:10px}
+.tb-step-body h3{font-family:var(--font-body);font-weight:600;font-size:1.25rem;margin-bottom:7px}
+.tb-step-body p{color:var(--muted)}
+@media(max-width:600px){
+  .tb-step{gap:18px}
+  .tb-step-num{width:46px;height:46px;font-size:1.2rem}
+  .tb-step:not(:last-child)::before{left:22px;top:46px}
+}
+
+/* Partner logos marquee */
+.logo-marquee{overflow:hidden;padding:8px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logo-track{display:inline-flex;align-items:center;gap:56px;white-space:nowrap;will-change:transform}
+.logo-track img{height:42px;width:auto;filter:grayscale(1);opacity:.55;transition:filter .2s ease,opacity .2s ease}
+.logo-track img:hover{filter:grayscale(0);opacity:1}
+.logo-ph{display:inline-flex;align-items:center;justify-content:center;height:46px;min-width:130px;border:1px dashed var(--line);border-radius:10px;color:var(--muted);font-family:var(--font-body);font-weight:600;font-size:.82rem;padding:0 20px;flex:0 0 auto}
+@media (prefers-reduced-motion: no-preference){
+  .logo-track{animation:marquee 32s linear infinite}
+  .logo-marquee:hover .logo-track{animation-play-state:paused}
+}
+
+/* Google reviews */
+.reviews-rating{text-align:center;margin-bottom:30px;font-size:1.05rem;color:var(--muted)}
+.reviews-rating strong{color:var(--text);font-size:1.3rem;font-family:var(--font-display)}
+.reviews-rating .stars{color:#f5a623;letter-spacing:2px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+.review-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.review-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--bg);flex:0 0 auto}
+.review-avatar.ph{display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--green);font-size:1.15rem}
+.review-name{font-weight:600;font-size:.98rem;line-height:1.2}
+.review-date{color:var(--muted);font-size:.82rem}
+.review-stars{color:#f5a623;letter-spacing:2px;font-size:.95rem;margin-bottom:8px}
+.review-text{color:var(--muted);font-size:.95rem}
+.reviews-cta{text-align:center;margin-top:30px}
+@media(max-width:860px){.reviews-grid{grid-template-columns:1fr}}

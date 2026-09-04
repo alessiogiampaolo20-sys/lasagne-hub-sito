@@ -5,7 +5,7 @@
 // if IntersectionObserver is missing (everything just shows).
 (function(){
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var selector = '.section-head, .card, .dish, .step, .quote, .service-block, .value, .occasion, .credibility .item, .faq-item, .promise, .final-cta, .review-banner, .custom-menu, .dietary';
+  var selector = '.section-head, .card, .dish, .step, .quote, .service-block, .value, .occasion, .credibility .item, .faq-item, .promise, .final-cta, .review-banner, .custom-menu, .dietary, .tb-step, .review-card';
   var targets = Array.prototype.slice.call(document.querySelectorAll(selector));
   if(!targets.length) return;
   targets.forEach(function(el){ el.classList.add('reveal'); });
@@ -135,4 +135,46 @@ document.querySelectorAll('.menu-choice').forEach(function(group){
     banner.classList.add('show');
     if(settings) settings.classList.add('show');
   }); });
+})();
+
+// Google reviews (Team Building page) — fetches from the Netlify function so the
+// API key stays server-side. If the function isn't configured (no env vars) or
+// fails, the hardcoded fallback reviews already in the HTML are left in place.
+(function(){
+  var grid = document.getElementById('reviews-grid');
+  if(!grid || !window.fetch) return;
+
+  function stars(n){ n = Math.round(n||0); return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); }
+  function el(tag, cls, text){ var e = document.createElement(tag); if(cls) e.className = cls; if(text!=null) e.textContent = text; return e; }
+
+  fetch('/.netlify/functions/google-reviews').then(function(r){ return r.json(); }).then(function(data){
+    if(!data || !data.configured || !data.reviews || !data.reviews.length) return; // keep fallback
+    // rating summary
+    var summary = document.getElementById('reviews-rating');
+    if(summary && data.rating){
+      summary.innerHTML = '';
+      summary.appendChild(el('strong', null, Number(data.rating).toFixed(1) + ' '));
+      summary.appendChild(el('span', 'stars', stars(data.rating)));
+      if(data.total) summary.appendChild(el('span', null, '  ·  ' + data.total + ' Google reviews'));
+    }
+    // "see all" link
+    var seeAll = document.getElementById('reviews-seeall');
+    if(seeAll && data.url) seeAll.setAttribute('href', data.url);
+    // replace cards with live reviews (max 6)
+    grid.innerHTML = '';
+    data.reviews.slice(0, 6).forEach(function(rv){
+      var card = el('div', 'review-card');
+      var head = el('div', 'review-head');
+      if(rv.avatar){ var img = el('img', 'review-avatar'); img.src = rv.avatar; img.alt = ''; img.loading = 'lazy'; head.appendChild(img); }
+      else { var ph = el('div', 'review-avatar ph', (rv.author||'?').charAt(0)); head.appendChild(ph); }
+      var meta = el('div');
+      meta.appendChild(el('div', 'review-name', rv.author || 'Google user'));
+      if(rv.relative) meta.appendChild(el('div', 'review-date', rv.relative));
+      head.appendChild(meta);
+      card.appendChild(head);
+      card.appendChild(el('div', 'review-stars', stars(rv.rating)));
+      card.appendChild(el('p', 'review-text', rv.text || ''));
+      grid.appendChild(card);
+    });
+  }).catch(function(){ /* keep fallback reviews */ });
 })();
