@@ -44,6 +44,30 @@
   });
 })();
 
+// Prevent duplicate submissions: once a valid submit is under way, lock the
+// submit button so a second click (or Enter) can't fire the same request again
+// before the browser navigates to the thank-you page. A timeout unlocks it as a
+// safety net in case navigation never happens.
+(function(){
+  var da = document.documentElement.lang === 'da';
+  document.querySelectorAll('form[data-netlify]').forEach(function(form){
+    form.addEventListener('submit', function(){
+      if(form.dataset.submitting === '1') return;
+      form.dataset.submitting = '1';
+      var btn = form.querySelector('[type="submit"]');
+      if(btn){
+        btn.dataset.label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = da ? 'Sender…' : 'Sending…';
+      }
+      setTimeout(function(){
+        form.dataset.submitting = '';
+        if(btn){ btn.disabled = false; if(btn.dataset.label) btn.textContent = btn.dataset.label; }
+      }, 8000);
+    });
+  });
+})();
+
 // Menu choice (Lasagne / Tiramisù / Both) — show lasagne-specific dietary
 // sub-fields only when lasagne is part of the order.
 document.querySelectorAll('.menu-choice').forEach(function(group){
